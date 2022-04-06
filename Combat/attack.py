@@ -21,7 +21,8 @@ elif mobs != None:
         
     Target.SetLast( mobs )
     Player.HeadMessage( colors[ 'red' ], 'Mobs nearby!' )
-    
+    while Target.HasTarget() :
+        Misc.Pause(500)
 elif greys != None:
     if Target.HasTarget():
         Target.TargetExecute( greys )
@@ -30,5 +31,8 @@ elif greys != None:
         
     Target.SetLast( greys )
     Player.HeadMessage( colors[ 'red' ], 'Greys nearby!' )
-    
-Misc.Pause( 100 )
+    while Target.HasTarget() :
+        Misc.Pause(500)
+else:
+    Misc.Pause( 100 )
+
