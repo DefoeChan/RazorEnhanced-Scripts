@@ -21,7 +21,7 @@ elif mobs != None:
         
     Target.SetLast( mobs )
     Player.HeadMessage( colors[ 'red' ], 'Mobs nearby!' )
-    while not Mobiles.FindBySerial(int(mobs)) == None:
+    while not Mobiles.FindBySerial(mobs) == None:
         Misc.Pause(500)
 elif greys != None:
     if Target.HasTarget():
@@ -30,8 +30,8 @@ elif greys != None:
         Player.Attack( greys )
         
     Target.SetLast( greys )
-    Player.HeadMessage( colors[ 'red' ], 'Greys nearby!' )
-    while not Mobiles.FindBySerial(int(greys)) == None:
+    Player.HeadMessage( colors[ 'red' ], 'Greys' + str(greys) + 'nearby!' )
+    while not Mobiles.FindBySerial(greys) == None:
         Misc.Pause(500)
 else:
     Misc.Pause( 100 )
