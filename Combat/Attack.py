@@ -24,15 +24,16 @@ elif mobs != None:
     while not Mobiles.FindBySerial(mobs) == None:
         Misc.Pause(500)
 elif greys != None:
-    Player.HeadMessage( colors[ 'red' ], 'Greys' + str(greys) + 'nearby!' )
+    Player.HeadMessage( colors[ 'red' ], 'Greys ' + str(greys.Serial) + ' nearby!' )
     if Target.HasTarget():
-        Target.TargetExecute( greys )
+        Target.TargetExecute( greys.Serial )
     else:
         Player.Attack( greys )
         
     Target.SetLast( greys )
-    while not Mobiles.FindBySerial(greys) == None:
+    while not Mobiles.FindBySerial(greys.Serial) == None:
         Misc.Pause(500)
+    Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
 else:
     Misc.Pause( 100 )
 
