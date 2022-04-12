@@ -1,7 +1,7 @@
 from Scripts.Glossary.colors import colors
 
 def AttackMelee(enemy):
-    Player.HeadMessage( colors[ 'red' ], 'Greys ' + str(enemy.Serial) + ' nearby!' )
+    Player.HeadMessage( colors[ 'red' ], 'Greys ' + str(enemy.Name) + ' nearby!' )
     if Target.HasTarget():
         Target.TargetExecute( emeny.Serial )
     else:
