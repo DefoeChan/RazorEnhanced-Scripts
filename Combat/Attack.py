@@ -9,7 +9,7 @@ def SearchDestroy(enemy):
         Target.SetLast( enemy )
         while not Mobiles.FindBySerial(enemy.Serial) == None:
             Chase(enemy)
-            Player.HeadMessage( colors[ 'green' ], 'Chasing' )
+#            Player.HeadMessage( colors[ 'green' ], 'Chasing' )
 #            Player.PathFindTo( enemyPosition.X, enemyPosition.Y , enemyPosition.Z )
 #            while PathFinding = True
             Misc.Pause(1000)
@@ -34,7 +34,10 @@ def Chase(enemy):
         LocDiffX = LocParty.X - LocSelf.X #The difference of x coordinates
         LocDiffY = LocParty.Y - LocSelf.Y #The difference of y coordinates
         cantGetThere += 1
-        if cantGetThere >= cantGetThereMax: break
+        if cantGetThere >= cantGetThereMax:
+            Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
+            while PathFinding == True:
+                Misc.Pause(500)
         #Find the most direct path to make the coordinates meet    
         if LocDiffX < -1:
             if LocDiffY < -1:
@@ -57,7 +60,8 @@ def Chase(enemy):
         else:
             PathFind = False
             cantGetThere = 0
-        Misc.Pause(20)
+        Misc.Pause(100)
+        Player.HeadMessage( colors[ 'red' ], cantGetThere )
 
 
 pks = Target.GetTargetFromList( 'pks' )
