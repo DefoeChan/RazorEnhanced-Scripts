@@ -36,7 +36,7 @@ def Chase(enemy):
         cantGetThere += 1
         if cantGetThere >= cantGetThereMax:
             Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
-            while PathFinding == True:
+            while not Player.InRange(enemy, 1):
                 Misc.Pause(500)
         #Find the most direct path to make the coordinates meet    
         if LocDiffX < -1:
