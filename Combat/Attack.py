@@ -14,10 +14,11 @@ def SearchDestroy(enemy):
 #            while PathFinding = True
             Misc.Pause(1000)
     Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
+    Misc.Pause(3000)
     
     
 def Chase(enemy):
-    cantGetThereMax = 50
+    cantGetThereMax = 20
     cantGetThere = 0
     PathFind = False
     
@@ -37,7 +38,8 @@ def Chase(enemy):
         if cantGetThere >= cantGetThereMax:
             Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
             while not Player.InRangeMobile(enemy, 1):
-                Misc.Pause(500)
+                Misc.Pause(1000)
+            Player.Attack( enemy )
         #Find the most direct path to make the coordinates meet    
         if LocDiffX < -1:
             if LocDiffY < -1:
@@ -61,6 +63,7 @@ def Chase(enemy):
             PathFind = False
             cantGetThere = 0
         Misc.Pause(100)
+        Player.Attack( enemy )
         Player.HeadMessage( colors[ 'red' ], cantGetThere )
 
 
