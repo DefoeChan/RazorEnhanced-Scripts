@@ -1,5 +1,11 @@
 from Scripts.Glossary.colors import colors
 
+IsTamer = False
+IsWarrior = False
+IsArcher = False
+IsMage = False
+IsBard = False
+
 def AttackStyle():
     global IsTamer
     global IsWarrior
@@ -34,8 +40,7 @@ def SearchDestroy(enemy):
                 Misc.Pause(500)
     if IsArcher:
         Player.PathFindTo(ememylastposition)
-    Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
-    Misc.Pause(3000)
+
     
     
 def Chase(enemy):
@@ -87,9 +92,12 @@ def Chase(enemy):
         else:
             PathFind = False
             cantGetThere = 0
-        Misc.Pause(100)
+            Misc.Pause(200)
         Player.Attack( enemy )
         Player.HeadMessage( colors[ 'red' ], cantGetThere )
+    Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
+    Target.AttackTargetFromList('mobs')
+    Misc.Pause(3000)
 
         
         
