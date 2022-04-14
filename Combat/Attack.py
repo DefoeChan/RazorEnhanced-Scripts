@@ -1,18 +1,33 @@
 from Scripts.Glossary.colors import colors
 
+def AttackStyle():
+    if Player.GetRealSkillValue('Animal Taming') > 70 and Player.Followers >= 3:
+        global IsTamer
+        IsTamer = True
+    if Player.GetRealSkillValue('Swords') >= 30 or Player.GetRealSkillValue('Fencing') >= 30 or Player.GetRealSkillValue('Macing') >= 30:
+        global IsWarrior
+        IsWarrior = True
+    if Player.GetRealSkillValue('Archery') >= 30:
+        global IsArcher
+        IsArcher = True
+    if Player.GetRealSkillValue('Magery') >= 30 and Player.GetRealSkillValue('EvalInt') >= 30:
+        global IsMage
+        IsMage = True
+    if Player.GetRealSkillValue('Provocation') >= 30:
+        global IsBard
+        IsBard = True
+
 def SearchDestroy(enemy):
-    Player.HeadMessage( colors[ 'red' ], 'Greys ' + str(enemy.Name) + ' nearby!' )
+    Player.HeadMessage( colors[ 'red' ], 'Attacking ' + str(enemy.Name) + '!' )
     if Target.HasTarget():
         Target.TargetExecute( emeny.Serial )
     else:
         Player.Attack( enemy )
         Target.SetLast( enemy )
         while not Mobiles.FindBySerial(enemy.Serial) == None:
-            Chase(enemy)
-#            Player.HeadMessage( colors[ 'green' ], 'Chasing' )
-#            Player.PathFindTo( enemyPosition.X, enemyPosition.Y , enemyPosition.Z )
-#            while PathFinding = True
-            Misc.Pause(1000)
+            if IsWarrior:
+                Chase(enemy)
+                Misc.Pause(1000)
     Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
     Misc.Pause(3000)
     
@@ -37,7 +52,8 @@ def Chase(enemy):
         cantGetThere += 1
         if cantGetThere >= cantGetThereMax:
             Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
-            while not Player.InRangeMobile(enemy, 1):
+            Timer.Create('pathfindingtimer', 10000)
+            while not Player.InRangeMobile(enemy, 1) and Timer.Check('pathfindingtimer'):
                 Misc.Pause(1000)
             Player.Attack( enemy )
         #Find the most direct path to make the coordinates meet    
@@ -66,6 +82,10 @@ def Chase(enemy):
         Player.Attack( enemy )
         Player.HeadMessage( colors[ 'red' ], cantGetThere )
 
+        
+        
+        
+AttackStyle()
 
 pks = Target.GetTargetFromList( 'pks' )
 mobs = Target.GetTargetFromList( 'mobs' )
