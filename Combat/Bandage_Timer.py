@@ -4,7 +4,7 @@
 # version 2.0 - If running RazorEnhanced 7.7.23 or greater use this now, or change line 13 to match
 
 # True for overhead Bandage Available message, false for in system messages
-overheadMessage = True
+overheadMessage = False
 
 msgcolor = 88
 Misc.SetSharedValue('bandageDone', True)
@@ -44,8 +44,6 @@ def WaitForBandagesToApply():
         secondsCounter += 1
         if overheadMessage:
             Player.HeadMessage( msgcolor, 'Bandage: %is' % ( secondsCounter ) )
-        else:
-            Player.HeadMessage ( msgcolor, 'Bandage: %is' % ( secondsCounter ) )
         
         if secondsCounter > 18:
             break

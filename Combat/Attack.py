@@ -1,20 +1,21 @@
 from Scripts.Glossary.colors import colors
 
 def AttackStyle():
+    global IsTamer
+    global IsWarrior
+    global IsArcher
+    global IsMage
+    global IsBard
+    
     if Player.GetRealSkillValue('Animal Taming') > 70 and Player.Followers >= 3:
-        global IsTamer
         IsTamer = True
     if Player.GetRealSkillValue('Swords') >= 30 or Player.GetRealSkillValue('Fencing') >= 30 or Player.GetRealSkillValue('Macing') >= 30:
-        global IsWarrior
         IsWarrior = True
     if Player.GetRealSkillValue('Archery') >= 30:
-        global IsArcher
         IsArcher = True
     if Player.GetRealSkillValue('Magery') >= 30 and Player.GetRealSkillValue('EvalInt') >= 30:
-        global IsMage
         IsMage = True
     if Player.GetRealSkillValue('Provocation') >= 30:
-        global IsBard
         IsBard = True
 
 def SearchDestroy(enemy):
@@ -28,6 +29,11 @@ def SearchDestroy(enemy):
             if IsWarrior:
                 Chase(enemy)
                 Misc.Pause(1000)
+            if IsArcher:
+                enemylastposition = enemy.Position
+                Misc.Pause(500)
+    if IsArcher:
+        Player.PathFindTo(ememylastposition)
     Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
     Misc.Pause(3000)
     
@@ -51,11 +57,14 @@ def Chase(enemy):
         LocDiffY = LocParty.Y - LocSelf.Y #The difference of y coordinates
         cantGetThere += 1
         if cantGetThere >= cantGetThereMax:
-            Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
-            Timer.Create('pathfindingtimer', 10000)
-            while not Player.InRangeMobile(enemy, 1) and Timer.Check('pathfindingtimer'):
-                Misc.Pause(1000)
-            Player.Attack( enemy )
+            break
+#            Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
+#            Timer.Create('pathfindingtimer', 10000)
+#            while not Player.InRangeMobile(enemy, 1) and Timer.Check('pathfindingtimer'):
+#                Misc.Pause(1000)
+#                if not Player.InRangeMobile(enemy, 30):
+#                    break
+#            Player.Attack( enemy )
         #Find the most direct path to make the coordinates meet    
         if LocDiffX < -1:
             if LocDiffY < -1:
@@ -86,17 +95,19 @@ def Chase(enemy):
         
         
 AttackStyle()
+status = 'Hunting'
 
-pks = Target.GetTargetFromList( 'pks' )
-mobs = Target.GetTargetFromList( 'mobs' )
-greys = Target.GetTargetFromList( 'greys' )
+while status == 'Hunting':
+    pks = Target.GetTargetFromList( 'pks' )
+    mobs = Target.GetTargetFromList( 'mobs' )
+    greys = Target.GetTargetFromList( 'greys' )
 
-if pks != None:
-    SearchDestroy(pks)
-elif mobs != None:
-    SearchDestroy(mobs)
-elif greys != None:
-    SearchDestroy(greys)
-else:
-    Misc.Pause( 100 )
-
+    if pks != None:
+        SearchDestroy(pks)
+    elif mobs != None:
+        SearchDestroy(mobs)
+    elif greys != None:
+        SearchDestroy(greys)
+    else:
+        Misc.Pause( 100 )
+    
