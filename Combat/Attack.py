@@ -44,7 +44,7 @@ def SearchDestroy(enemy):
     
     
 def Chase(enemy):
-    cantGetThereMax = 20
+    cantGetThereMax = 50
     cantGetThere = 0
     PathFind = False
     
@@ -56,20 +56,19 @@ def Chase(enemy):
     if LocDiffX >= 2 or LocDiffX <= -2 or LocDiffY >= 2 or LocDiffY <= -2: PathFind = True
 
     while PathFind == True:
-        LocParty = enemy.Position # Your main characters position
-        LocSelf = Player.Position # This characters position
-        LocDiffX = LocParty.X - LocSelf.X #The difference of x coordinates
-        LocDiffY = LocParty.Y - LocSelf.Y #The difference of y coordinates
+        EnemyPosition = enemy.Position # Your main characters position
+        SelfPosition = Player.Position # This characters position
+        LocDiffX = EnemyPosition.X - SelfPosition.X #The difference of x coordinates
+        LocDiffY = EnemyPosition.Y - SelfPosition.Y #The difference of y coordinates
         cantGetThere += 1
         if cantGetThere >= cantGetThereMax:
-            break
-#            Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
-#            Timer.Create('pathfindingtimer', 10000)
-#            while not Player.InRangeMobile(enemy, 1) and Timer.Check('pathfindingtimer'):
-#                Misc.Pause(1000)
-#                if not Player.InRangeMobile(enemy, 30):
-#                    break
-#            Player.Attack( enemy )
+            Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
+            Timer.Create('pathfindingtimer', 10000)
+            while not Player.InRangeMobile(enemy, 1) and Timer.Check('pathfindingtimer'):
+                Misc.Pause(1000)
+                if not Player.InRangeMobile(enemy, 30):
+                    break
+            Player.Attack( enemy )
         #Find the most direct path to make the coordinates meet    
         if LocDiffX < -1:
             if LocDiffY < -1:
@@ -91,10 +90,12 @@ def Chase(enemy):
             Player.Run('South', False)
         else:
             PathFind = False
+            Player.HeadMessage( colors[ 'green' ], 'pf false' )
             cantGetThere = 0
             Misc.Pause(200)
         Player.Attack( enemy )
         Player.HeadMessage( colors[ 'red' ], cantGetThere )
+        Misc.Pause(50)
     Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
     Target.AttackTargetFromList('mobs')
     Misc.Pause(3000)
