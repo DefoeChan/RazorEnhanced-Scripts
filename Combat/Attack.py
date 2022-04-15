@@ -105,7 +105,7 @@ def Chase(enemy):
         
 AttackStyle()
 status = 'Hunting'
-
+status = 'Hunting'
 while status == 'Hunting':
     pks = Target.GetTargetFromList( 'pks' )
     mobs = Target.GetTargetFromList( 'mobs' )
