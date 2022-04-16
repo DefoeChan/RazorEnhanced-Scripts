@@ -40,7 +40,7 @@ def SearchDestroy(enemy):
                 Misc.Pause(500)
     if IsArcher:
         Player.PathFindTo(ememylastposition)
-
+    CheckBackpack()
     
     
 def Chase(enemy):
@@ -101,6 +101,14 @@ def Chase(enemy):
     Misc.Pause(3000)
 
         
+def CheckBackpack():
+    global status
+    if Player.Weight >= Player.MaxWeight - 20: status = 'GoingHome' #Weight
+    if Items.BackpackCount(0x0EED) >= 10000: status = 'GoingHome' #Gold
+    if IsWarrior:
+        if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' #Bandages
+        if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' #Bandages
+    Player.HeadMessage( colors[ 'red' ], 'Going Home!' )
         
         
 AttackStyle()
@@ -120,3 +128,6 @@ while status == 'Hunting':
     else:
         Misc.Pause( 100 )
     
+
+if status == 'GoingHome':
+    Player.HeadMessage( colors[ 'red' ], 'Going Home Now!' )
