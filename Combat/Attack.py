@@ -6,6 +6,11 @@ IsArcher = False
 IsMage = False
 IsBard = False
 
+if Player.Name == 'Defoe' :
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 
+    
 def AttackStyle():
     global IsTamer
     global IsWarrior
@@ -103,14 +108,14 @@ def Chase(enemy):
         
 def CheckBackpack():
     global status
-    if Player.Weight >= Player.MaxWeight - 20: status = 'GoingHome' #Weight
-    if Items.BackpackCount(0x0EED) >= 10000: status = 'GoingHome' #Gold
+    if Player.Weight >= Player.MaxWeight - 20: status = 'GoingHome' # Weight
+    if Items.BackpackCount(0x0EED) >= 10000: status = 'GoingHome' # Gold
     if IsWarrior:
-        if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' #Bandages
-        if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' #Bandages
+        if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' # Bandages
+        if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' # Bandages
     Player.HeadMessage( colors[ 'red' ], 'Going Home!' )
         
-        
+# Main        
 AttackStyle()
 status = 'Hunting'
 status = 'Hunting'
