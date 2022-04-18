@@ -43,6 +43,8 @@ def SearchDestroy(enemy):
             if IsArcher:
                 enemylastposition = enemy.Position
                 Misc.Pause(500)
+            if IsTamer:
+                Misc.Pause(500)
     if IsArcher:
         Player.PathFindTo(ememylastposition)
     CheckBackpack()
