@@ -10,6 +10,14 @@ if Player.Name == 'Defoe' :
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+elif Player.Name == 'Defoe' :
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+else Player.Name == 'Defoe' :
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
     
 def AttackStyle():
     global IsTamer
