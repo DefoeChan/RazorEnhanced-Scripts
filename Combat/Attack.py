@@ -36,7 +36,21 @@ def AttackStyle():
         IsMage = True
     if Player.GetRealSkillValue('Provocation') >= 30:
         IsBard = True
-
+        
+def HomeBank():
+    global status
+    if Item.DistanceTo(itm) <= 2:
+        Organizer.RunOnce(organizerName,sourceBag,destBag,dragDelay)
+        while Organizer.Status(): Misc.Pause(1000)
+        Organizer.RunOnce(organizerName,sourceBag,destBag,dragDelay)
+        while Organizer.Status(): Misc.Pause(1000)
+    while Player.Hits < Player.HitsMax or Player.Mana < Player.ManaMax or Player.Stam < Player.StamMax: Misc.Pause(1000)
+    status = 'Ready'
+    
+def Deploying():
+    global status
+    
+    
 def SearchDestroy(enemy):
     Player.HeadMessage( colors[ 'red' ], 'Attacking ' + str(enemy.Name) + '!' )
     if Target.HasTarget():
