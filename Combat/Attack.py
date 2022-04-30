@@ -6,15 +6,15 @@ IsArcher = False
 IsMage = False
 IsBard = False
 
-if Player.Name == 'Defoe' :
+if Player.Name == 'Defoe':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
-elif Player.Name == 'Defoe' :
+elif Player.Name == 'Defoe':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
-else Player.Name == 'Defoe' :
+else:
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
@@ -39,11 +39,13 @@ def AttackStyle():
         
 def HomeBank():
     global status
-    if Item.DistanceTo(itm) <= 2:
-        Organizer.RunOnce(organizerName,sourceBag,destBag,dragDelay)
-        while Organizer.Status(): Misc.Pause(1000)
-        Organizer.RunOnce(organizerName,sourceBag,destBag,dragDelay)
-        while Organizer.Status(): Misc.Pause(1000)
+    if Player.DistanceTo(Items.FindBySerial(0x41BDCCC7)) <= 2:
+        Organizer.RunOnce('gold', Player.Backpack.Serial, 0x41BDCCC7, 300)
+        Organizer.RunOnce('reagents', Player.Backpack.Serial, 0x40A7B9F2, 300)
+        if Player.GetRealSkillValue('Magery') >= 30:
+            Restock.RunOnce('reagents', 0x40A7B9F2, Player.Backpack.Serial, 300)
+        if Player.GetRealSkillValue('Healing') >= 30 or Player.GetRealSkillValue('Veterinary') >= 30:
+            Restock.RunOnce('bandages', 0x40A7B9F2, Player.Backpack.Serial, 300)
     while Player.Hits < Player.HitsMax or Player.Mana < Player.ManaMax or Player.Stam < Player.StamMax: Misc.Pause(1000)
     status = 'Ready'
     
