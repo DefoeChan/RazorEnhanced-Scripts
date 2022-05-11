@@ -2,7 +2,7 @@
 
 from time import sleep
 from datetime import datetime
-import clr, time, thread, sys, System
+import clr, time, sys, System
 
 clr.AddReference('System')
 clr.AddReference('System.Drawing')
@@ -15,7 +15,7 @@ from System import Byte
 from System.Drawing import Point, Color, Size
 from System.Windows.Forms import *
 import sys
-sys.path.append(r'C:\IronPython.2.7.9\Lib')
+sys.path.append(r'C:\Program Files\IronPython 2.7\Lib')
 import ctypes
 User32 = ctypes.WinDLL('User32.dll')
 

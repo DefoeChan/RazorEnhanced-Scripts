@@ -24,3 +24,4 @@ for l in scrolls:
         Misc.ContextReply(currentScroll, contextResponse)
         Target.WaitForTarget(1000, False)
         Target.TargetExecute(spellBook)
+        Misc.Pause(100)
