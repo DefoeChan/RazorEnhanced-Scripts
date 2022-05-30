@@ -1,8 +1,12 @@
 import json
+import sys
 
-sys.path.append("C:\Program Files\IronPython 2.7\Lib") # path to your modules
-import requests
-
+Misc.Pause( 5000 )
+if Player.GetRealSkillValue( 'Healing' ) < 50:
+    Misc.SendMessage( 'No Healing, stopping script',33)
+    Misc.Pause( 200 )
+    sys.exit()
+    
 def server():
     while 1 > 0:
         if Journal.SearchByName('Ready to deploy', 'Kopier'):
