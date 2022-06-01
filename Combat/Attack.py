@@ -10,78 +10,112 @@ if Player.Name == 'Defoe':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'Chillichen':
     mount = 0x0000AA92
     pet = 0x00175EC1
-    runebook = 0x40254F88
+    runebook = 0x40C63288
+    
 elif Player.Name == 'Coronavirus':
     mount = 0x0000AA92
     pet = 0x00175EC1
-    runebook = 0x40254F88
+    runebook = 0x40C62F68
+    
+elif Player.Name == 'Ubermacht':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40EE9436
+
+elif Player.Name == 'Kopier':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 00x40EE9C40
+    
+elif Player.Name == 'Ludwig Dieter':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40EE9E00
+    
 elif Player.Name == 'A':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'B':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'C':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'Dena':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'E':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'F':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'G':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'H':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'I':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'J':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'K':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'L':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'M':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'N':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'O':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 elif Player.Name == 'P':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
+    
 else:
     mount = 0x0000AA92
     pet = 0x00175EC1
