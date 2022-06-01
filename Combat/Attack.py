@@ -10,7 +10,75 @@ if Player.Name == 'Defoe':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
-elif Player.Name == 'Defoe':
+elif Player.Name == 'Chillichen':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'Coronavirus':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'A':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'B':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'C':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'Dena':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'E':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'F':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'G':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'H':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'I':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'J':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'K':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'L':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'M':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'N':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'O':
+    mount = 0x0000AA92
+    pet = 0x00175EC1
+    runebook = 0x40254F88
+elif Player.Name == 'P':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40254F88
