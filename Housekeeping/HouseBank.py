@@ -1,4 +1,4 @@
-def HomeBank():
+def HouseBank():
     global status
     if Player.DistanceTo(Items.FindBySerial(0x41BDCCC7)) <= 2:
         Organizer.RunOnce('gold', Player.Backpack.Serial, 0x41BDCCC7, 500)
@@ -19,4 +19,5 @@ def HomeBank():
     while Player.Hits < Player.HitsMax or Player.Mana < Player.ManaMax or Player.Stam < Player.StamMax: Misc.Pause(1000)
     status = 'Ready'
     
-HomeBank()
+    
+HouseBank()
