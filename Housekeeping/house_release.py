@@ -1,1 +1,1 @@
-Player.ChatSay( 58, 'i wish to release this' )
+Player.ChatSay( 58, 'I wish to release this.' )

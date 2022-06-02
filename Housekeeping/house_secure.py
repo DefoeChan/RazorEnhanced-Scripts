@@ -1,1 +1,1 @@
-Player.ChatSay( 58, 'i wish to secure this' )
+Player.ChatSay( 58, 'I wish to secure this.' )
