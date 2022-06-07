@@ -5,7 +5,7 @@ if Player.InRangeItem(0x405D612C, 3): # Parliament
     chestgold = 0x405D612C
     chestreagents = 0x40262E27
     chestarmor = 0x41F0264E
-    chestloot = 0x4020356F
+    chestloot = 0x4360F2E5
 else: # Highgate Cemetery
     chestgold = 0x41BDCCC7
     chestreagents = 0x40A7B9F2
