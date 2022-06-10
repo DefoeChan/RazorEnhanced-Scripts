@@ -1,12 +1,21 @@
 # Use this to cast Mana Vampire on someone (or yourself) until you run out of regs.
-# By MatsaMilla
 
-#----------------------------------------------------
+def TrainEvalInt():
+    global dummy
+    while Player.GetRealSkillValue("Eval Int") < Player.GetSkillCap("Eval Int"):
+        Player.UseSkill("Eval Int")
+        Target.WaitForTarget(1000, True)
+        Target.TargetExecute(dummy)
+        Misc.Pause(1200)
 
+        
 training = Target.PromptTarget("Target training dummy")
 dummy = Mobiles.FindBySerial(training)
 
 import sys
+
+
+TrainEvalInt()
 
 while True:
     dummy = Mobiles.FindBySerial(training)
