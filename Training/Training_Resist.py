@@ -20,16 +20,28 @@ TrainEvalInt()
 while True:
     dummy = Mobiles.FindBySerial(training)
     if Player.DistanceTo(dummy) < 12:
-        Player.SetWarMode(False)
-        if Player.GetRealSkillValue("Magery") < 70:
+        if Player.GetSkillValue("Magery") <= 62.8:
+            Player.SetWarMode(False)
             Spells.CastMagery("Mana Drain")
-        else:
+            Target.WaitForTarget(1500, True)
+            Target.TargetExecute(dummy)
+            Player.SetWarMode(True)
+            Player.SetWarMode(False)
+            Misc.Pause(2500)
+        elif Player.GetSkillValue("Magery") > 62.8 and Player.GetSkillValue("Magery") < 75.5:
+            Spells.CastMagery("Invisibility")
+            Target.WaitForTarget(1500, True)
+            Target.Self()
+            Misc.Pause(2500)
+        elif Player.GetSkillValue("Magery") > 75.5:
+            Player.SetWarMode(False)
             Spells.CastMagery("Mana Vampire")
-        Target.WaitForTarget(1500, False)
-        Target.TargetExecute(dummy)
-        Player.SetWarMode(True)
-        Player.SetWarMode(False)
-        Misc.Pause(2500)
+            Target.WaitForTarget(1500, True)
+            Target.TargetExecute(dummy)
+            Player.SetWarMode(True)
+            Player.SetWarMode(False)
+            Misc.Pause(2500)
+
     
     Player.SetWarMode(False)
     
