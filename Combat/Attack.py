@@ -29,7 +29,7 @@ elif Player.Name == 'Ubermacht':
 elif Player.Name == 'Kopier':
     mount = 0x0000AA92
     pet = 0x00175EC1
-    runebook = 00x40EE9C40
+    runebook = 0x40EE9C40
     
 elif Player.Name == 'Ludwig Dieter':
     mount = 0x0000AA92
@@ -177,13 +177,13 @@ def SearchDestroy(enemy):
                 Chase(enemy)
                 Misc.Pause(1000)
             if IsArcher:
-                enemylastposition = enemy.Position
+                #enemylastposition = enemy.Position
                 Misc.Pause(500)
             if IsTamer:
                 Misc.Pause(500)
-    if IsArcher:
-        Player.PathFindTo(ememylastposition)
-    CheckBackpack()
+#    if IsArcher:
+#        Player.PathFindTo(ememylastposition)
+#    CheckBackpack()
     
     
 def Chase(enemy):

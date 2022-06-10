@@ -33,7 +33,7 @@ def TrainItemIdentification():
 
     Timer.Create( 'itemIdentificationTimer', 1 )
 
-    while not Player.IsGhost and Player.GetRealSkillValue( 'Item ID' ) < Player.GetSkillCap( 'Item ID' ):
+    while Player.GetRealSkillValue( 'Item ID' ) < Player.GetSkillCap( 'Item ID' ):
         if not Timer.Check( 'itemIdentificationTimer' ):
             Player.UseSkill( 'Item ID' )
             Target.WaitForTarget( 2000, True )
@@ -41,9 +41,7 @@ def TrainItemIdentification():
             Timer.Create( 'itemIdentificationTimer', itemIdentificationTimerMilliseconds )
         Misc.Pause( 50 )
 
-    if targetStillExists == None:
-        Player.HeadMessage( colors[ 'red' ], 'Selected target for Item Identification is gone' )
-    elif Player.GetRealSkillValue( 'Item ID' ) >= Player.GetSkillCap( 'Item ID' ):
+    if Player.GetRealSkillValue( 'Item ID' ) >= Player.GetSkillCap( 'Item ID' ):
         Player.HeadMessage( colors[ 'green' ], 'Item Identification training complete!' )
 
 
