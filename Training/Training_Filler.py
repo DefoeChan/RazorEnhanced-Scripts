@@ -117,10 +117,10 @@ TasteIDTimerMilliseconds = 1200
 
 
 
-TrainTasteID()
 TrainAnatomy()
 TrainAnimalLore()
 TrainEvalInt()
+TrainSpiritSpeak()
 TrainArmsLore()
 TrainItemIdentification()
-TrainSpiritSpeak()
+TrainTasteID()
