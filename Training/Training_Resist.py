@@ -33,7 +33,7 @@ while True:
             Target.WaitForTarget(1500, True)
             Target.Self()
             Misc.Pause(2500)
-        elif Player.GetSkillValue("Magery") > 75.5:
+        elif Player.GetSkillValue("Magery") >= 75.5:
             Player.SetWarMode(False)
             Spells.CastMagery("Mana Vampire")
             Target.WaitForTarget(1500, True)
