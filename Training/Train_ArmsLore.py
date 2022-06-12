@@ -6,7 +6,7 @@ Last Contribution By: TheWarDoctor95 - May 30, 2019
 Description: Uses the selected target to train Arms Lore to its cap
 '''
 
-from Scripts.glossary.colors import colors
+from Scripts.Glossary.colors import colors
 
 armsLoreTimerMilliseconds = 1200
 
