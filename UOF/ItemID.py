@@ -22,7 +22,7 @@ tossJunk = False
 sound = "D:\\Program Files\\CUO Launcher\\ClassicUO\\Data\\Plugins\\Razor-Enhanced\\Sounds\\pssst.wav"
 
 # Servers drag delay
-dragTime = 650
+dragTime = 1500
     
 #**********************************************************
 
