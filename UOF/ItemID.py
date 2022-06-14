@@ -27,12 +27,12 @@ dragTime = 1500
 #**********************************************************
 
 # constant chests
-regChest = 0x43510513
-netChest = 0x4012EC5A
-goldChest = 0x463A35DB
-gemChest = 0x4208D8F2
-lvl8bag = 0x424A881A #where to put lvl 8 scrolls
-scrollChest = 0x41FF4A29 #chest for all other scrolls
+regChest = 0x40262E27
+netChest = 0x4360F2E5
+goldChest = 0x405D612C
+gemChest = 0x4360F2E5
+lvl8bag = 0x42A851FD #where to put lvl 8 scrolls
+scrollChest = 0x42A851FD #chest for all other scrolls
 
 # bags inside scrollChest, from 1-8 for lvls
 scrollBags = [ 0x424A8818,0x424A881B,0x424A8817,0x424A8816,0x424A8819,0x424A8815,0x424A8814,0x424A881A]
@@ -40,8 +40,8 @@ scrollBags = [ 0x424A8818,0x424A881B,0x424A8817,0x424A8816,0x424A8819,0x424A8815
 #**********************************************************
 
 containerToOrganize = Target.PromptTarget('Select container to ID stuff in')
-sellBag = Target.PromptTarget('Select Sell to NPC Bag')
-goodChest = Target.PromptTarget('Select KEEPER container (GOOD SHIT)')
+sellBag = Player.Backpack #Target.PromptTarget('Select Sell to NPC Bag')
+goodChest = 0x402872CD #Target.PromptTarget('Select KEEPER container (GOOD SHIT)')
 
 # Will use ID Wand if skill Item ID below 80
 if Player.GetRealSkillValue('Item ID') < 80:
