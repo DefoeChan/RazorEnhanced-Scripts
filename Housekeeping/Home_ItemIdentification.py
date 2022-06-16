@@ -1,10 +1,25 @@
 Journal.Clear()
-chestLoot = Items.FindBySerial(0x4360F2E5)
-chestVanquishing = Items.FindBySerial(0x42A851FD)
-chestVanquishing = Items.FindBySerial(0x42A851FD)
-chestRepond = Items.FindBySerial(0x42912AF1)
-trashcan = Items.FindBySerial(0x413220D0)
 
+if Player.InRangeItem(0x405D612C, 3): # Parliament
+    chestGold = 0x405D612C
+    chestReagents = 0x40262E27
+    chestArmor = 0x41F0264E
+    chestLoot = 0x4360F2E5
+    chestVanquishing = Items.FindBySerial(0x42A851FD)
+    chestInvulnerability = Items.FindBySerial(0x42A851FD)
+    chestRepond = Items.FindBySerial(0x42912AF1)
+    trashcan = Items.FindBySerial(0x413220D0)
+else: # Highgate Cemetery
+    chestGold = 0x41BDCCC7
+    chestReagents = 0x40A7B9F2
+    chestArmor = 0x471B1D1F
+    chestLoot = 0x433CECD9
+    chestVanquishing = Items.FindBySerial(0x471B1D1F)
+    chestInvulnerability = Items.FindBySerial(0x471B1D1F)
+    chestRepond = Items.FindBySerial(0x471B1D1F)
+    trashcan = Player.Backpack
+    
+chestLoot = Items.FindBySerial(chestLoot)
 for iteminchest in chestLoot.Contains:
     Player.UseSkill("Item ID")
     Target.WaitForTarget(5000)
@@ -97,6 +112,9 @@ for iteminchest in chestLoot.Contains:
     elif Journal.Search("Invulnerability") == 1:
         Misc.SendMessage("--> Invulnerability");
         Items.Move(iteminchest , chestInvulnerability, 0)
+    elif Journal.Search("Supremely Accurate") == 1:
+        Misc.SendMessage("--> Supremely Accurate");
+        Items.Move(iteminchest , chestVanquishing, 0)
     elif Journal.Search("orcish pickaxe") == 1 or \
          Journal.Search("Orcish Pickaxe") == 1:
         Misc.SendMessage("Trash");
@@ -107,8 +125,14 @@ for iteminchest in chestLoot.Contains:
          Journal.Search("Power") == 1 or \
          Journal.Search("Defense") == 1 or \
          Journal.Search("Guarding") == 1 or\
-         Journal.Search("Hardening") == 1:
-         Misc.SendMessage("--> Sell");
+         Journal.Search("Hardening") == 1 or\
+         Journal.Search("Durable") == 1 or\
+         Journal.Search("Substantial") == 1 or\
+         Journal.Search("Massive") == 1 or\
+         Journal.Search("Fortified") == 1 or\
+         Journal.Search("Indestructible") == 1 or\
+         Journal.Search("Accurate") == 1:
+        Misc.SendMessage("--> Sell");
         Items.Move(iteminchest , Player.Backpack, 0)
     Misc.Pause(1000)
     Journal.Clear()
