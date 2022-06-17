@@ -173,12 +173,12 @@ def SearchDestroy(enemy):
         Player.Attack( enemy )
         Target.SetLast( enemy )
         while not Mobiles.FindBySerial(enemy.Serial) == None:
-            if IsWarrior:
+            if IsWarrior or IsArcher:
                 Chase(enemy)
                 Misc.Pause(1000)
-            if IsArcher:
-                #enemylastposition = enemy.Position
-                Misc.Pause(500)
+#            if IsArcher:
+#                #enemylastposition = enemy.Position
+#                Misc.Pause(500)
             if IsTamer:
                 Misc.Pause(500)
 #    if IsArcher:
@@ -233,7 +233,7 @@ def Chase(enemy):
             Player.Run('South', False)
         else:
             PathFind = False
-            Player.HeadMessage( colors[ 'green' ], 'pf false' )
+            #Player.HeadMessage( colors[ 'green' ], 'pf false' )
             cantGetThere = 0
             Misc.Pause(200)
         Player.Attack( enemy )
