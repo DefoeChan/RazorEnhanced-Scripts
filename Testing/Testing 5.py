@@ -64,11 +64,11 @@ def Chase(enemy):
         else:
             PathFind = False
             Player.HeadMessage( colors[ 'green' ], 'Arrived.' )
+            Player.Attack( enemy )
             cantGetThere = 0
             Misc.Pause(100)
-#        Player.Attack( enemy )
-        Player.HeadMessage( colors[ 'red' ], cantGetThere )
-        Misc.Pause(50)
+        #Player.HeadMessage( colors[ 'red' ], cantGetThere )
+        Misc.Pause(100)
     #Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
 #    Target.AttackTargetFromList('mobs')
     
