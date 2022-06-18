@@ -61,7 +61,7 @@ elif Player.Name == 'E':
     pet = 0x00175EC1
     runebook = 0x40C63320
     
-elif Player.Name == 'F':
+elif Player.Name == 'Felberta':
     mount = 0x0000AA92
     pet = 0x00175EC1
     runebook = 0x40C62A4B
@@ -180,6 +180,16 @@ def SearchDestroy(enemy):
 #                #enemylastposition = enemy.Position
 #                Misc.Pause(500)
             if IsTamer:
+                Misc.Pause(500)
+            if IsMage:
+                if Player.Followers < 4 and Player.Mana >= 50 and \
+                    Items.BackpackCount(0x0F7B) > 2 and \
+                    Items.BackpackCount(0x0F86) > 2 and \
+                    Items.BackpackCount(0x0F8D) > 2 and \
+                    Items.BackpackCount(0x0F8C) > 2:
+                    Spells.CastMagery('Summon Daemon')
+                    Misc.Pause(4000)
+                    Player.ChatSay(0, "All guard")
                 Misc.Pause(500)
 #    if IsArcher:
 #        Player.PathFindTo(ememylastposition)

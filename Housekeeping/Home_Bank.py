@@ -27,7 +27,10 @@ def HouseBank():
         Misc.Pause(delay)
         Organizer.RunOnce('unidentified', Player.Backpack.Serial, chestLoot, delay)
         Misc.Pause(delay)
-        if Player.GetRealSkillValue('Magery') >= 30:
+        if Player.GetRealSkillValue('Magery') >= 30 and Player.GetRealSkillValue('EvalInt') >= 30:
+            Restock.RunOnce('reagents_mage', chestReagents, Player.Backpack.Serial, delay)
+            Misc.Pause(delay)
+        if Player.GetRealSkillValue('Magery') >= 30 and Player.GetRealSkillValue('EvalInt') < 30 :
             Restock.RunOnce('reagents', chestReagents, Player.Backpack.Serial, delay)
             Misc.Pause(delay)
         if Player.GetRealSkillValue('Archery') >= 30:
