@@ -132,18 +132,20 @@ else:
     runebook = 0x40254F88
     
     
-from Scripts.Glossary.Rail.BritainCemetery import waypoints
 
 def Pathfind(x, y, z):
     Player.PathFindTo(x, y, z)
-    distance = Distance(Player.Position.X, Player.Position.Y, x, y)
+    distance = PlayerDistanceTo(x, y)
     while distance > 1:
-        distance = Distance(Player.Position.X, Player.Position.Y, x, y)
+        distance = PlayerDistance(x, y)
         Player.HeadMessage(0, distance)
         Misc.Pause(100)
 
 def Distance(x1, y1, x2, y2):
     return max(abs(x1 - x2) , abs(y1 - y2))
+
+def PlayerDistanceTo(x, y):
+    return distance(Player.Position.X, Player.Position.Y, x, y)
     
 def AttackStyle():
     global IsTamer
@@ -154,11 +156,15 @@ def AttackStyle():
     
     if Player.GetRealSkillValue('Animal Taming') > 70 and Player.Followers >= 3:
         IsTamer = True
-    if Player.GetRealSkillValue('Swords') >= 30 or Player.GetRealSkillValue('Fencing') >= 30 or Player.GetRealSkillValue('Macing') >= 30:
+    if Player.GetRealSkillValue('Swords') >= 30 or \
+        Player.GetRealSkillValue('Fencing') >= 30 or \
+        Player.GetRealSkillValue('Macing') >= 30:
         IsWarrior = True
     if Player.GetRealSkillValue('Archery') >= 30:
         IsArcher = True
-    if Player.GetRealSkillValue('Magery') >= 30 and Player.GetRealSkillValue('EvalInt') >= 30:
+    if Player.GetRealSkillValue('Magery') >= 30 and \
+        Player.GetRealSkillValue('EvalInt') >= 30 and \
+        Player.GetRealSkillValue('Animal Taming') < 30:
         IsMage = True
     if Player.GetRealSkillValue('Provocation') >= 30:
         IsBard = True
@@ -278,7 +284,8 @@ def CheckBackpack():
         if Items.BackpackCount(0x0E21) < 10: status = 'GoingHome' # Bandages
     Player.HeadMessage( colors[ 'red' ], 'Going Home!' )
         
-# Main        
+# Main
+from Scripts.Glossary.Rail.BritainCemetery import waypoints
 AttackStyle()
 status = 'Hunting'
 status = 'Hunting'
