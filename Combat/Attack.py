@@ -213,6 +213,8 @@ def SearchDestroy(enemy):
     
     
 def Chase(enemy):
+    
+    enemy = Mobiles.FindBySerial(0x00294CEB)
     cantGetThereMax = 50
     cantGetThere = 0
     PathFind = False
@@ -234,10 +236,9 @@ def Chase(enemy):
             Player.PathFindTo(enemy.Position.X, enemy.Position.Y, enemy.Position.Z)
             Timer.Create('pathfindingtimer', 10000)
             while not Player.InRangeMobile(enemy, 1) and Timer.Check('pathfindingtimer'):
-                Misc.Pause(1000)
-                if not Player.InRangeMobile(enemy, 30):
+                Misc.Pause(50)
+                if not Player.InRangeMobile(enemy, 20):
                     break
-            Player.Attack( enemy )
         #Find the most direct path to make the coordinates meet    
         if LocDiffX < -1:
             if LocDiffY < -1:
@@ -259,15 +260,13 @@ def Chase(enemy):
             Player.Run('South', False)
         else:
             PathFind = False
-            #Player.HeadMessage( colors[ 'green' ], 'pf false' )
+            Player.HeadMessage( colors[ 'green' ], 'Arrived.' )
+            Player.Attack( enemy )
             cantGetThere = 0
-            Misc.Pause(200)
-        Player.Attack( enemy )
-        Player.HeadMessage( colors[ 'red' ], cantGetThere )
-        Misc.Pause(50)
-    Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
-    Target.AttackTargetFromList('mobs')
-    Misc.Pause(3000)
+            Misc.Pause(100)
+        Misc.Pause(100)
+    #Player.HeadMessage( colors[ 'green' ], 'The enemy is dead.' )
+#    Target.AttackTargetFromList('mobs')
 
         
 def CheckBackpack():
