@@ -1,4 +1,5 @@
 from Scripts.Glossary.colors import colors
+from Scripts.Glossary.Rail.BritainCemetery import waypoints
 
 def pathToMobile(mob):
     Misc.SendMessage('lets go')
