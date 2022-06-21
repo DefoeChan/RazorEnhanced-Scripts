@@ -1,5 +1,15 @@
 from Scripts.Glossary.colors import colors
 
+def SetSkills():
+    Player.SetSkillStatus('*',1)
+    Player.SetSkillStatus('Spirit Speak',0)
+    Player.SetSkillStatus('Item ID',0)
+    Player.SetSkillStatus('Snooping',0)
+    Player.SetSkillStatus('Arms Lore',0)
+    Player.SetSkillStatus('Detect Hidden',0)
+    Player.SetSkillStatus('Eval Int',0)
+    Player.SetSkillStatus('TasteID',0)
+    
 
 def TrainSpiritSpeak():
     '''
@@ -34,6 +44,7 @@ def TrainItemIdentification():
     Timer.Create( 'itemIdentificationTimer', 1 )
 
     while Player.GetRealSkillValue( 'Item ID' ) < Player.GetSkillCap( 'Item ID' ):
+        knife = Items.FindByID(0x0F52,0,Player.Backpack.Serial,True)
         if not Timer.Check( 'itemIdentificationTimer' ):
             Player.UseSkill( 'Item ID' )
             Target.WaitForTarget( 2000, True )
@@ -53,7 +64,8 @@ def TrainArmsLore():
 
     Timer.Create( 'armsLoreTimer', 1 )
 
-    while Player.GetRealSkillValue("Arms Lore") < Player.GetSkillCap("Arms Lore"):
+    while Player.GetRealSkillValue('Arms Lore') < Player.GetSkillCap('Arms Lore'):
+        knife = Items.FindByID(0x0F52,0,Player.Backpack.Serial,True)
         if not Timer.Check( 'armsLoreTimer' ):
             Player.UseSkill( 'Arms Lore' )
             Target.WaitForTarget( 2000, False )
@@ -65,26 +77,26 @@ def TrainArmsLore():
 
 
 def TrainAnatomy():
-    while Player.GetRealSkillValue("Anatomy") < Player.GetSkillCap("Anatomy"):
-        Player.UseSkill("Anatomy")
+    while Player.GetRealSkillValue('Anatomy') < Player.GetSkillCap('Anatomy'):
+        Player.UseSkill('Anatomy')
         Target.WaitForTarget(1000, True)
-        Target.PerformTargetFromList("horse")
+        Target.PerformTargetFromList('horse')
         Misc.Pause(4200)
 
         
 def TrainEvalInt():
-    while Player.GetRealSkillValue("Eval Int") < Player.GetSkillCap("Eval Int"):
-        Player.UseSkill("Eval Int")
+    while Player.GetRealSkillValue('Eval Int') < Player.GetSkillCap('Eval Int'):
+        Player.UseSkill('Eval Int')
         Target.WaitForTarget(1000, True)
-        Target.PerformTargetFromList("horse")
+        Target.PerformTargetFromList('horse')
         Misc.Pause(1200)
         
         
 def TrainAnimalLore():
-    while Player.GetRealSkillValue("Animal Lore") < Player.GetSkillCap("Animal Lore"):
-        Player.UseSkill("Animal Lore")
+    while Player.GetRealSkillValue('Animal Lore') < Player.GetSkillCap('Animal Lore'):
+        Player.UseSkill('Animal Lore')
         Target.WaitForTarget(1000, True)
-        Target.PerformTargetFromList("horse")
+        Target.PerformTargetFromList('horse')
         Misc.Pause(1200)
 
         
@@ -96,16 +108,26 @@ def TrainTasteID():
 
     Timer.Create( 'armsLoreTimer', 1 )
 
-    while Player.GetRealSkillValue("TasteID") < Player.GetSkillCap("TasteID"):
+    while Player.GetRealSkillValue('TasteID') < Player.GetSkillCap('TasteID'):
+        banana = Items.FindByID(0x171F,0,Player.Backpack.Serial,True)
         if not Timer.Check( 'TasteIDTimer' ):
             Player.UseSkill( 'TasteID' )
             Target.WaitForTarget( 2000, False )
             Target.TargetExecute( banana )
             Timer.Create( 'TasteIDTimer', TasteIDTimerMilliseconds )
+            
+def TrainDetectHidden():          
+    while Player.GetRealSkillValue('Detect Hidden') < Player.GetSkillCap('Detect Hidden'):
+        Player.UseSkill('Detect Hidden')
+        Target.WaitForTarget(1200, True)
+        Target.Self()
+        Misc.Pause(3200)
+                
+def TrainSnooping():
+    Player.PathFindTo(1494, 1615, 20)
+    while Player.GetRealSkillValue('Snooping') < Player.GetSkillCap('Snooping'):
+        Items.UseItem(0x406C0A68)
         
-        
-knife = Items.FindByID(0x0F52,0,Player.Backpack.Serial,True)
-banana = Items.FindByID(0x171F,0,Player.Backpack.Serial,True)
 
 
 itemIdentificationTimerMilliseconds = 1200
@@ -114,11 +136,12 @@ armsLoreTimerMilliseconds = 1200
 TasteIDTimerMilliseconds = 1200
 
 
+SetSkills()
 
-TrainAnatomy()
-TrainAnimalLore()
+TrainDetectHidden()
 TrainEvalInt()
 TrainSpiritSpeak()
 TrainArmsLore()
 TrainItemIdentification()
 TrainTasteID()
+TrainSnooping()
