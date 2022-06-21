@@ -1,11 +1,13 @@
-from System.Collections.Generic import List
-# Wep crafter by MatsaMilla; Last edit: Matsamilla 12/28/21
+
+# Wep crafter by MatsaMilla; Last edit: Matsamilla 5/27/22 - fixed tossing exceptionals
 #
-# Only have 1 type of wood on you at a time
+# Only have 1 type of wood on you at a time, it adjusts wood type automagically
+#
+# will restock same wood type from beetle
 #
 # crafts weps for fletching and carpentry, wep list below (comment out ones not crafting)
 #
-# Moves good weps to beetle *must be exceptional
+# Moves good weps to beetle *must be exceptional, trashes all non exceptional
 
 ################## SETUP SECTION ####################################
 
@@ -17,7 +19,7 @@ useIDWands = False # true to use ID wands to ID magic items as
 # update with your beetles serial to move good weps to
 beetle = 0x001FB0A6
 
-#inspect an item in the bag of your beetle, copy root container serial here
+#inspect an item in the bag of your beetle, copy root container serial here. used to restock wood
 beetleContainer = 0x41EF22A5
 
 # turn to true if client has tool tips enabled, more reliable
@@ -34,25 +36,25 @@ weapToCraft = 'comp'
 ################ Items to keep Setup Section #########################
 
 # Anything in this list will be moved to beetle
-keepProps = ['Vanquishing','Power']
+keepProps = ['Vanquishing','Power','Execptional']
 
 # slayer props, take out the ones you dont want to keep, if you want. Will keep all slayers in list.
-slayerProps = ['Silver','Elemental Ban','Undead','Dragon Slaying',
-    'Reptilian Death','Terathan','Exorcism','Repond','Fey',
-    'Orc Slaying','Ogre Trashing','Balron Damnation','Daemon Dismissal',
-    'Water Dissipation','Earth Shatter','Arachnid', 'Blood Drinking',
-    'Lizardman Slaughter','Scorpion\'s Bane','Vacuum','Gargoyle\'s Foe',
-    'Troll Slaughter','Flame Dousing','Summer Wind','Spider\'s Death',
-    'Elemental Health','Ophidian','Snake\'s Bane']
+slayerProps = ['Silver','Elemental','Undead','Dragon',
+    'Reptilian','Terathan','Exorcism','Repond','Fey',
+    'Slaying','Ogre Trashing','Balron','Daemon',
+    'Water','Earth','Arachnid', 'Blood',
+    'Lizardman','Scorpion','Vacuum','Gargoyle',
+    'Troll','Flame','Summer Wind','Spider',
+    'Elemental','Ophidian','Snake']
 # You can move slayers you do not want to keep down here, or just delete them. 
 # Just make sure they have a # in front so the code will ignore them.
-# 
+# 'Lizardman Slaughter','Scorpion Bane','Vacuum','Gargoyle','Troll Slaughter','Flame Dousing','Summer Wind','Spider\'s Death','Elemental Health','Ophidian','Snake\'s Bane'
 
 #Any item in this list will be kept if paired with a durability or accuracy mod, does not count if on other side of #
 wepDmgMods = ['Vanquishing','Power', 'Force'] # 'Ruin','Might'
 
 ######################### Do not touch anything below here# #######################################
-
+from System.Collections.Generic import List
 #disregaurd list below
 wepDurabilityMods = ['Indestructable', 'Fortified', 'Massive', 'Substantial', 'Durable']
 wepAccuracyMods = ['Supremely Accurate','Exceedingly Accurate','Eminently Accurate', 'Surpassingly Accurate', 'Accurate']
@@ -60,7 +62,7 @@ wepAccuracyMods = ['Supremely Accurate','Exceedingly Accurate','Eminently Accura
 #the order of these is the order of how wood will be used
 woodHues = [ 1193 , 1194 , 1151 , 1192 , 1191 ,2010 ] # heartwood, bloodwood, frostwood, yew, ash, oak
  
-dragTime = 600
+dragTime = 1000
 fletchTool = 0x1022
 saw = 0x1034
 tink = 0x1EB8
@@ -440,7 +442,7 @@ def idItemToolTips(item):
             idItem(item)
         Items.WaitForProps(item, 2000)
         props = Items.GetPropStringList(item)
-        if 'Exceptional' in props:
+        if 'exceptional' in Items.GetPropStringByIndex(item,0):
             if any(elim in keepProps for elim in props):
             #if any(Journal.Search(keep) for keep in keepProps):
                 #** moves to beetle if has property in keepProps **
