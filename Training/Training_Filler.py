@@ -80,7 +80,7 @@ def TrainAnatomy():
     while Player.GetRealSkillValue('Anatomy') < Player.GetSkillCap('Anatomy'):
         Player.UseSkill('Anatomy')
         Target.WaitForTarget(1000, True)
-        Target.PerformTargetFromList('horse')
+        Target.PerformTargetFromList('blue_human_next')
         Misc.Pause(4200)
 
         
@@ -88,7 +88,7 @@ def TrainEvalInt():
     while Player.GetRealSkillValue('Eval Int') < Player.GetSkillCap('Eval Int'):
         Player.UseSkill('Eval Int')
         Target.WaitForTarget(1000, True)
-        Target.PerformTargetFromList('horse')
+        Target.PerformTargetFromList('blue_human_next')
         Misc.Pause(1200)
         
         
